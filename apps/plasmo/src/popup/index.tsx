@@ -16,10 +16,6 @@ function IndexPopup() {
           paddingTop: 0,
           width: "300px",
         }}>
-        <h1>
-          Welcome to the T3 <a href="https://www.plasmo.com">Plasmo</a>{" "}
-          Extension!
-        </h1>
         <Welcome />
         <Todos />
       </div>

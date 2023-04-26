@@ -8,6 +8,7 @@ const Welcome = (props: Props) => {
 
   return (
     <div>
+      <h1>Welcome to the T3 Plasmo Turbo Extension!</h1>
       <p>{greeting}</p>
     </div>
   );

@@ -1,81 +1,64 @@
-# Turborepo starter
+# T3 Plasmo Turbo
 
-This is an official starter Turborepo.
+This is a template for creating T3 apps and Plasmo browser extensions using Turborepo. With Turborepo + TRPC Api, you can easily manage web app and browser extension projects in one repository. It's obviously been derived from the `create-t3-turbo`. Styling is not yet configured.
 
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## Folder Structure
 
 ```
-cd my-turborepo
-pnpm build
+apps
+  ├─ plasmo
+  |   ├─ Plasmo .69
+  |   ├─ React 18 & /src
+  |   ├─ Clerk Authentication (WIP)
+  |   ├─ Navigation using Expo Router
+  |   └─ Typesafe API calls using tRPC
+  └─ next.js
+      ├─ Next.js 13
+      ├─ React 18
+  |   ├─ Clerk Authentication (WIP)
+      └─ E2E Typesafe API Server & Client
+packages
+ ├─ api
+ |   └─ tRPC v10 router definition
+ ├─ db
+ |   └─ typesafe db-calls using Prisma
+ ├─ ui
+ |   └─ its been there by default (maybe we can add component library in this)
+ ├─ eslint-config-custom
+ |   └─ its been there by default
+ └─ tsconfig
+     └─ shared tsconfig (to be extended from)
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
+## Quick Started
 
 ```
-cd my-turborepo
-pnpm dev
+cp .env.example .env
+yarn install
+yarn dev
 ```
 
-### Remote Caching
+### View Chrome Extension
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+1. Head over to `chrome://extensions` and enable Developer Mode.
+2. Click on "Load Unpacked" and navigate to your extension's `/apps/plasmo/build/chrome-mv3-dev` (or `/apps/plasmo/build/chrome-mv3-prod`) directory.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Migrate Prisma
 
 ```
-npx turbo link
+yarn workspace db db:migrate
 ```
 
-## Useful Links
+## Deployment
 
-Learn more about the power of Turborepo:
+TBC
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Contributing, Suggestions, Bug Reports and Feedback
+
+I'm no expert and most of the stuff aren't finished, so, any contributions & feedbacks are welcomed! Just open an Issues or a PR!
+
+If you encounter any bugs or issues while using this template, please report them in the Issues section of this repository.
+
+## References
+
+The stack originates from [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).
