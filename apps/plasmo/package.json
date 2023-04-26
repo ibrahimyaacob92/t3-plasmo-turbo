@@ -1,0 +1,40 @@
+{
+  "name": "plasmo",
+  "displayName": "T3 Plasmo",
+  "version": "0.0.1",
+  "description": "A basic Plasmo extension with T3 app.",
+  "author": "ibrahim",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.29.5",
+    "@trpc/client": "^10.21.1",
+    "@trpc/react": "^9.27.4",
+    "@trpc/server": "^10.21.1",
+    "plasmo": "0.69.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.4",
+    "@types/chrome": "0.0.233",
+    "@types/node": "18.15.12",
+    "@types/react": "18.0.37",
+    "@types/react-dom": "18.0.11",
+    "prettier": "2.8.7",
+    "typescript": "5.0.4",
+    "api": "*",
+    "db": "*"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*"
+    ],
+    "permissions": [
+      "tabs"
+    ]
+  }
+}

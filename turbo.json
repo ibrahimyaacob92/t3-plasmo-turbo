@@ -1,14 +1,59 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
   "pipeline": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**"]
+      "db:generate": {
+        "inputs": [
+          "prisma/schema.prisma"
+        ],
+        "cache": false
+      },
+      "db:push": {
+        "inputs": [
+          "prisma/schema.prisma"
+        ],
+        "cache": false
+      },
+      "dev": {
+        "persistent": true,
+        "cache": false
+      },
+      "dependsOn": [
+        "^build",
+        "^db:generate"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "lint": {},
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "type-check": {
+      "dependsOn": [
+        "^db:generate"
+      ],
+      "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "CI",
+    "DATABASE_URL",
+    "DISCORD_CLIENT_ID",
+    "DISCORD_CLIENT_SECRET",
+    "EXPO_ROUTER_APP_ROOT",
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL",
+    "NODE_ENV",
+    "SKIP_ENV_VALIDATION",
+    "VERCEL",
+    "NEXT_PORT",
+    "VERCEL_URL"
+  ]
 }
