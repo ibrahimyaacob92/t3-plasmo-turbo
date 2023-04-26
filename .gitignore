@@ -51,13 +51,8 @@ keys.json
 /coverage
 
 # database
-/prisma/db.sqlite
-/prisma/db.sqlite-journal
-
-
-# production
-/build
-
+prisma/db.sqlite
+prisma/db.sqlite-journal
 
 
 # local env files

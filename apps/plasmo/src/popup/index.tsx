@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 import { TRPCProvider } from "~utils/trpc";
-
+import Todos from "./components/Todos";
 import Welcome from "./components/Welcome";
 
 function IndexPopup() {
@@ -14,10 +13,15 @@ function IndexPopup() {
           display: "flex",
           flexDirection: "column",
           padding: 16,
+          paddingTop: 0,
+          width: "300px",
         }}>
+        <h1>
+          Welcome to the T3 <a href="https://www.plasmo.com">Plasmo</a>{" "}
+          Extension!
+        </h1>
         <Welcome />
-        <input onChange={(e) => setData(e.target.value)} value={data} />
-        <footer>Crafted by @PlamoHQ</footer>
+        <Todos />
       </div>
     </TRPCProvider>
   );
