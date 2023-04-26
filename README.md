@@ -35,6 +35,7 @@ packages
 ```
 cp .env.example .env
 yarn install
+yarn db:push
 yarn dev
 ```
 
@@ -52,6 +53,8 @@ yarn workspace db db:migrate
 ## Deployment
 
 TBC
+
+## Todos
 
 ## Contributing, Suggestions, Bug Reports and Feedback
 

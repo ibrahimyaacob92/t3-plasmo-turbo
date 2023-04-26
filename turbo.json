@@ -4,23 +4,19 @@
     "**/.env.*local"
   ],
   "pipeline": {
+    "db:generate": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
+      "cache": false
+    },
+    "db:push": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
+      "cache": false
+    },
     "build": {
-      "db:generate": {
-        "inputs": [
-          "prisma/schema.prisma"
-        ],
-        "cache": false
-      },
-      "db:push": {
-        "inputs": [
-          "prisma/schema.prisma"
-        ],
-        "cache": false
-      },
-      "dev": {
-        "persistent": true,
-        "cache": false
-      },
       "dependsOn": [
         "^build",
         "^db:generate"
@@ -43,15 +39,9 @@
     }
   },
   "globalEnv": [
-    "CI",
     "DATABASE_URL",
-    "DISCORD_CLIENT_ID",
-    "DISCORD_CLIENT_SECRET",
     "EXPO_ROUTER_APP_ROOT",
-    "NEXTAUTH_SECRET",
-    "NEXTAUTH_URL",
     "NODE_ENV",
-    "SKIP_ENV_VALIDATION",
     "VERCEL",
     "NEXT_PORT",
     "VERCEL_URL"
