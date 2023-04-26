@@ -1,8 +1,11 @@
 # T3 Plasmo Turbo
 
+![plasmo](https://user-images.githubusercontent.com/58116068/234546253-7abb331b-905b-48f8-9f11-f5bfb0932eab.png)
+
 This is a template for creating T3 apps and Plasmo browser extensions using Turborepo. With Turborepo + TRPC Api, you can easily manage web app and browser extension projects in one repository. It's obviously been derived from the `create-t3-turbo`. Styling is not yet configured.
 
 ## Folder Structure
+
 
 ```
 apps
