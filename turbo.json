@@ -40,7 +40,8 @@
   },
   "globalEnv": [
     "DATABASE_URL",
-    "EXPO_ROUTER_APP_ROOT",
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+    "CLERK_SECRET_KEY",
     "NODE_ENV",
     "VERCEL",
     "NEXT_PORT",

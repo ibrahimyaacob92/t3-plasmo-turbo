@@ -22,7 +22,9 @@ const Todos = (props: Props) => {
       <div>
         <h5>Todos</h5>
         {listOfTodos?.map((todo) => (
-          <p key={todo.id}>{todo.todo}</p>
+          <p key={todo.id}>
+            {todo.todo} by {todo.createdBy}
+          </p>
         ))}
       </div>
       <input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />

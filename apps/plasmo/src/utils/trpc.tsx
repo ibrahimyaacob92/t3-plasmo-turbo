@@ -1,3 +1,4 @@
+import { useAuth } from "@clerk/chrome-extension";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
@@ -6,8 +7,6 @@ import { transformer } from "api/transformer";
 import React from "react";
 
 export { transformer } from "api/transformer";
-
-// import { useAuth } from "@clerk/clerk-expo";
 
 /**
  * A set of typesafe hooks for consuming your API.
@@ -29,19 +28,19 @@ const getBaseUrl = () => {
 export const TRPCProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  // const { getToken } = useAuth();
+  const { getToken } = useAuth();
   const [queryClient] = React.useState(() => new QueryClient());
   const [trpcClient] = React.useState(() =>
     trpc.createClient({
       transformer,
       links: [
         httpBatchLink({
-          // async headers() {
-          //   const authToken = await getToken();
-          //   return {
-          //     Authorization: authToken ?? undefined,
-          //   };
-          // },
+          async headers() {
+            const authToken = await getToken();
+            return {
+              Authorization: authToken ?? undefined,
+            };
+          },
           url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
