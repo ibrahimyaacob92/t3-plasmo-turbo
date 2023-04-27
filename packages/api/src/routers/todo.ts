@@ -6,7 +6,7 @@ export const todoRouter = createTRPCRouter({
     .input(z.object({ text: z.string().optional() }).optional())
     .query(({ input, ctx }) => {
       return `Hi ${
-        input?.text || "Random Persom"
+        input?.text || "Random Person"
       }, welcome to T3 Plasmo Turbo App`;
     }),
   getAll: publicProcedure.query(({ ctx }) => {

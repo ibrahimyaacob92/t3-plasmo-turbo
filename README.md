@@ -6,19 +6,18 @@ This is a template for creating T3 apps and Plasmo browser extensions using Turb
 
 ## Folder Structure
 
-
 ```
 apps
   ├─ plasmo
   |   ├─ Plasmo .69
   |   ├─ React 18 & /src
-  |   ├─ Clerk Authentication (WIP)
+  |   ├─ Clerk Authentication
   |   ├─ Navigation using Expo Router
   |   └─ Typesafe API calls using tRPC
   └─ next.js
       ├─ Next.js 13
       ├─ React 18
-  |   ├─ Clerk Authentication (WIP)
+  |   ├─ Clerk Authentication
       └─ E2E Typesafe API Server & Client
 packages
  ├─ api
@@ -37,6 +36,9 @@ packages
 
 ```
 cp .env.example .env
+
+# get clerk secret and publishable key
+# change db reference (optional)
 yarn install
 yarn db:push
 yarn dev
@@ -46,6 +48,7 @@ yarn dev
 
 1. Head over to `chrome://extensions` and enable Developer Mode.
 2. Click on "Load Unpacked" and navigate to your extension's `/apps/plasmo/build/chrome-mv3-dev` (or `/apps/plasmo/build/chrome-mv3-prod`) directory.
+3. Pin the extension & login. Note that, social login is not fully functioning, so it's best to stick with password or sending codes to mail
 
 ### Migrate Prisma
 
@@ -58,6 +61,14 @@ yarn workspace db db:migrate
 TBC
 
 ## Todos
+
+- [x] Add Clerk to Project
+- [ ] Unify environment variables
+- [ ] Figure out styling library
+- [ ] Plasmo folder structure improvement
+- [ ] Plasmo state management
+- [ ] Fix Landing Page Appearance
+- [ ] Deployment
 
 ## Contributing, Suggestions, Bug Reports and Feedback
 

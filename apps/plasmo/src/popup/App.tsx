@@ -1,11 +1,13 @@
 import {
   ClerkProvider,
   SignIn,
+  SignOutButton,
   SignUp,
   SignedIn,
   SignedOut,
 } from "@clerk/chrome-extension";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { sendToBackground } from "@plasmohq/messaging";
 import { TRPCProvider } from "~utils/trpc";
 import Todos from "./components/Todos";
 import Welcome from "./components/Welcome";
@@ -14,29 +16,69 @@ function IndexPopup() {
   const clerkPubKey =
     "pk_test_YW11c2luZy1wb3NzdW0tMjguY2xlcmsuYWNjb3VudHMuZGV2JA";
   const navigate = useNavigate();
+
+  const onClick = async () => {
+    console.log("wish");
+    const res = await sendToBackground({
+      name: "ping" as never,
+      body: {
+        hello: "world",
+      },
+    });
+    console.log({ res });
+  };
+
   return (
     <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
       <TRPCProvider>
         <Routes>
-          <Route path="/sign-up/*" element={<SignUp signInUrl="/" />} />
+          <Route
+            path="/sign-up/*"
+            element={
+              <div style={{ width: 400, padding: 10 }}>
+                <SignUp
+                  signInUrl="/"
+                  appearance={{
+                    elements: {
+                      socialButtons: {
+                        display: "none",
+                      },
+                      dividerRow: {
+                        display: "none",
+                      },
+                    },
+                  }}
+                />
+              </div>
+            }
+          />
           <Route
             path="/"
             element={
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: 16,
-                  paddingTop: 0,
-                  width: "300px",
-                }}>
+              <div style={{ width: 400, padding: 10 }}>
                 <Welcome />
                 <SignedIn>
                   <Todos />
+                  <SignOutButton />
                 </SignedIn>
                 <SignedOut>
-                  <SignIn afterSignInUrl="/" signUpUrl="/sign-up" />
+                  <SignIn
+                    appearance={{
+                      elements: {
+                        socialButtons: {
+                          display: "none",
+                        },
+                        dividerRow: {
+                          display: "none",
+                        },
+                      },
+                    }}
+                    afterSignInUrl="/"
+                    signUpUrl="/sign-up"
+                  />
                 </SignedOut>
+                <hr />
+                <button onClick={onClick}>Send to Background</button>
               </div>
             }
           />

@@ -1,5 +1,5 @@
-import { SignInButton, useUser } from "@clerk/nextjs";
 import styles from "./index.module.css";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -10,7 +10,9 @@ const Home: NextPage = () => {
   const [newTodo, setNewTodo] = useState("");
   const { user } = useUser();
   const utils = api.useContext();
-  const { data: greeting } = api.todo.hello.useQuery({ text: "Random Person" });
+  const { data: greeting } = api.todo.hello.useQuery({
+    text: user?.fullName || "Random Person",
+  });
   const { data: listOfTodos } = api.todo.getAll.useQuery();
 
   const { mutate } = api.todo.createTodo.useMutation({
@@ -29,7 +31,9 @@ const Home: NextPage = () => {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
-          <h1 className={styles.title}>T3 Plasmo Turbo App</h1>
+          <h1 id="title" className={styles.title}>
+            T3 Plasmo Turbo App
+          </h1>
           {user ? (
             <span className={styles.showcaseText}>
               Sign In As: {user.primaryEmailAddress?.emailAddress}{" "}
