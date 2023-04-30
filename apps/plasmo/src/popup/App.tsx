@@ -13,12 +13,12 @@ import Todos from "./components/Todos";
 import Welcome from "./components/Welcome";
 
 function IndexPopup() {
-  const clerkPubKey =
-    "pk_test_YW11c2luZy1wb3NzdW0tMjguY2xlcmsuYWNjb3VudHMuZGV2JA";
+  const clerkPubKey = process.env[
+    "PLASMO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+  ] as string;
   const navigate = useNavigate();
 
   const onClick = async () => {
-    console.log("wish");
     const res = await sendToBackground({
       name: "ping" as never,
       body: {

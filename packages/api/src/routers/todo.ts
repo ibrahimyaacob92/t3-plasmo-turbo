@@ -1,4 +1,5 @@
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 export const todoRouter = createTRPCRouter({
@@ -9,8 +10,16 @@ export const todoRouter = createTRPCRouter({
         input?.text || "Random Person"
       }, welcome to T3 Plasmo Turbo App`;
     }),
-  getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.todo.findMany();
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    // try {
+    const todos = await ctx.prisma.todo.findMany();
+    return todos;
+    // } catch (error: any) {
+    //   throw new TRPCError({
+    //     code: error.code || "INTERNAL_SERVER_ERROR",
+    //     message: error.message,
+    //   });
+    // }
   }),
   createTodo: protectedProcedure
     .input(

@@ -1,7 +1,10 @@
 import type { PlasmoCSConfig } from "plasmo";
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://www.plasmo.com/*", "http://localhost:3000/*"],
+  matches: [
+    "https://www.plasmo.com/*",
+    `http://localhost:${process.env.PLASMO_PUBLIC_DEV_PORT}/*`,
+  ],
 };
 
 window.addEventListener("load", () => {

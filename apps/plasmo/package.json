@@ -5,9 +5,10 @@
   "description": "A basic Plasmo extension with T3 app.",
   "author": "ibrahim",
   "scripts": {
-    "dev": "plasmo dev",
+    "dev": "yarn with-env plasmo dev",
     "build": "plasmo build",
-    "package": "plasmo package"
+    "package": "plasmo package",
+    "with-env": "dotenv -e ../../.env"
   },
   "dependencies": {
     "@clerk/chrome-extension": "^0.2.7",

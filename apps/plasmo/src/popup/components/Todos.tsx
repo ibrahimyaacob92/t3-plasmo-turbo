@@ -21,7 +21,7 @@ const Todos = (props: Props) => {
     <div>
       <div>
         <h5>Todos</h5>
-        {listOfTodos?.map((todo) => (
+        {listOfTodos.map((todo) => (
           <p key={todo.id}>
             {todo.todo} by {todo.createdBy}
           </p>

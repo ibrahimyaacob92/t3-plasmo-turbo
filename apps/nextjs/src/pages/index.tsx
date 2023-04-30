@@ -16,8 +16,8 @@ const Home: NextPage = () => {
   const { data: listOfTodos } = api.todo.getAll.useQuery();
 
   const { mutate } = api.todo.createTodo.useMutation({
-    onSuccess: () => {
-      utils.todo.getAll.invalidate();
+    onSuccess: async () => {
+      await utils.todo.getAll.invalidate();
       setNewTodo("");
     },
   });
